@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Mobilki_lab2">
 
         <meta-data android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyAjNDK4K8JLnLvTLal1mrvR5Wn0BKnxG_M"/>
+        android:value="AIzaSyA0i_KIpsLP0sEbjKswLp_sGcqzGBukV0U"/>
 
  <activity
         android:name=".MainActivity"

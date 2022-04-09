@@ -63,15 +63,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/userPhoto"
         android:layout_width="146dp"
         android:layout_height="154dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="163dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="108dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/user" />
+        android:src="@drawable/user" />
 
     <TextView
         android:id="@+id/post"
