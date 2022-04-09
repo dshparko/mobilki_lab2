@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Toolbar">
+        <item name="android:background">@color/toolbar_color</item>
+
+        <item name="android:textSize">14sp</item>
+
+        <item name="android:layout_width">match_parent</item>
+        android:layout_height="match_parent"
+    </style>
+
+</resources>

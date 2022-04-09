@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1815" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1815" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/activity_home.xml" value="0.4" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/activity_sign_in.xml" value="0.275" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/activity_user.xml" value="0.264" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/toolbar.xml" value="0.4" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1285" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
