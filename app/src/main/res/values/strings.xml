@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">mobilki_lab2</string>
+    <string name = "map_key" templateMergeStrategy ="preserve" translatable="false">AIzaSyD4KfDcLVjVPatpIKtrPXot024Z4UHVZQ8</string>
 </resources>
