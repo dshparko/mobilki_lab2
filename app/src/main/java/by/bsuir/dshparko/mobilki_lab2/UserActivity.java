@@ -3,10 +3,13 @@ package by.bsuir.dshparko.mobilki_lab2;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -16,6 +19,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 
 import com.bumptech.glide.Glide;
@@ -31,18 +35,20 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabLayout;
 
-public class UserActivity extends AppCompatActivity {
+public class UserActivity extends AppCompatActivity  implements LocationListener {
 
 
     TextView name, email;
     ImageView userPhoto;
-
+    LocationManager mLocationManager;
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode());
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
             setContentView(R.layout.activity_user);
@@ -51,7 +57,7 @@ public class UserActivity extends AppCompatActivity {
             Uri personPhoto = acct.getPhotoUrl();
             name = findViewById(R.id.userName);
             userPhoto = findViewById(R.id.userPhoto);
-
+            mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             Glide.with(getApplicationContext())
                   .load(personPhoto)
                     .into(userPhoto);
@@ -76,6 +82,44 @@ public class UserActivity extends AppCompatActivity {
             Intent intent1 = new Intent(this, SignInActivity.class);
             startActivity(intent1);
         }
+
+        @SuppressLint("ResourceType") TabLayout toolbar;
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.selectTab(toolbar.getTabAt(1),true);
+        toolbar = findViewById(R.id.toolbar);
+
+        toolbar.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()) {
+                    case 0:
+
+                        Intent intent2 = new Intent(UserActivity.this, HomeActivity.class);
+                        startActivity(intent2);
+                        break;
+                    case 1:
+
+                        Intent intent1 = new Intent(UserActivity.this, UserActivity.class);
+                        startActivity(intent1);
+                        break;
+                    case 2:
+
+                        Intent intent3 = new Intent(UserActivity.this, SearchActivity.class);
+                        startActivity(intent3);
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @SuppressLint("MissingSuperCall")
@@ -91,10 +135,13 @@ public class UserActivity extends AppCompatActivity {
 
     public void getCurrentLocation() {
         @SuppressLint("MissingPermission")
-        Task<Location> task = client.getLastLocation();
+        Task<Location> task = client.getLastLocation(); //System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(task+"!!!!!!!!!!!!!!!!!!!");
+
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
-            public void onSuccess(Location location) {
+            public void onSuccess(Location location) {System.out.println(location+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
                 if (location != null){
                     supportMapFragment.getMapAsync(new OnMapReadyCallback() {
                         @Override
@@ -104,10 +151,14 @@ public class UserActivity extends AppCompatActivity {
                             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
 
                             googleMap.addMarker(options).showInfoWindow();
+
+
                         }
                     });
                 }
             }
+
+
         });
     }
 
@@ -134,6 +185,11 @@ public class UserActivity extends AppCompatActivity {
 
         ((TextView) aboutDialog.findViewById(android.R.id.message))
                 .setMovementMethod(LinkMovementMethod.getInstance());
+
+    }
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
 
     }
 }

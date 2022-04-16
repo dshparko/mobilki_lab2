@@ -7,11 +7,11 @@
     >
 
     <include
-        android:id="@+id/include"
+
         layout="@layout/toolbar"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="IncludeLayoutParam" />
@@ -33,9 +33,10 @@
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="226dp"
-        android:layout_marginTop="163dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="108dp"
         android:text="TextView"
+        android:textSize="@dimen/font_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,19 +68,21 @@
         android:id="@+id/userPhoto"
         android:layout_width="146dp"
         android:layout_height="154dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="108dp"
+        android:src="@drawable/user"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/user" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+
         android:id="@+id/post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="226dp"
-        android:layout_marginTop="197dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="168dp"
         android:text="TextView"
+        android:textSize="@dimen/font_size1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
