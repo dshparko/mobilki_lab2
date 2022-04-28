@@ -9,5 +9,10 @@
         <item name="android:layout_width">match_parent</item>
         android:layout_height="match_parent"
     </style>
-
+    <style name="MySwitch" parent="Theme.AppCompat.Light">
+        <item name="trackTint">#DBBEFF</item>
+        <item name="colorSwitchThumbNormal">#BD67BC</item>
+        <!-- Активное состояние -->
+        <item name="colorControlActivated">#6A109C</item>
+    </style>
 </resources>

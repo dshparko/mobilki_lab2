@@ -77,7 +77,8 @@ System.out.println(getIntent().getStringExtra("image"));
                 String detailUrl = getIntent().getStringExtra("detailUrl");
                 Document document = Jsoup.connect(detailUrl).get();
 
-                Elements data = document.getElementsByClass("woocommerce-Tabs-panel woocommerce-Tabs-panel--custom_tab_s panel entry-content wc-tab");
+                Elements data = document.getElementsByClass("b-product_details-content");
+                System.out.println(data);
 
                 description = data.select("p")
                         .text();

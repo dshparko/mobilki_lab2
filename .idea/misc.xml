@@ -7,14 +7,16 @@
         <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1815" />
         <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/drawable/oval.xml" value="0.1" />
         <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/drawable/oval_button.xml" value="0.19" />
-        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/activity_home.xml" value="0.176" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/activity_item_detail.xml" value="0.4" />
-        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/activity_search.xml" value="0.4" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/activity_search.xml" value="0.128" />
         <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/activity_sign_in.xml" value="0.275" />
         <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/activity_user.xml" value="0.2744721689059501" />
-        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/check_internet_dialog.xml" value="0.275" />
-        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/item_card.xml" value="0.5240506329113924" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/check_internet_dialog.xml" value="0.264" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/item_card.xml" value="0.2" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/menu.xml" value="0.275" />
         <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/layout/toolbar.xml" value="0.264" />
+        <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/menu/menu_rate.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/mobilki_lab2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1285" />
       </map>
     </option>

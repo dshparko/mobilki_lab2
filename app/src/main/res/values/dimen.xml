@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <dimen name="font_size">24dp</dimen>
 
     <dimen name="font_size1">22dp</dimen>
+
+    <dimen name="radius" tools:ignore="DuplicateDefinition">233dp</dimen>
 </resources>

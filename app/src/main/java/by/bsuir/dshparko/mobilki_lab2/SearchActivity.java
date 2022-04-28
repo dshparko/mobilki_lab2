@@ -14,7 +14,8 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        setTitle("Search");
+
+        getSupportActionBar().hide();
         @SuppressLint("ResourceType") TabLayout toolbar;
         toolbar = findViewById(R.id.toolbar);
         toolbar.selectTab(toolbar.getTabAt(2),true);

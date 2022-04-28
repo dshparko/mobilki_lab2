@@ -48,6 +48,7 @@ public class UserActivity extends AppCompatActivity  implements LocationListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Profile");
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode());
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {

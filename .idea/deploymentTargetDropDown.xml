@@ -7,12 +7,12 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\Lenovo\.android\avd\Huawei_P40_Lite_E_API_29_2.avd" />
+            <value value="C:\Users\Lenovo\.android\avd\Huawei_P40_Lite_E_API_29.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2022-04-15T18:14:44.913804400Z" />
+    <timeTargetWasSelectedWithDropDown value="2022-04-23T07:55:53.351243600Z" />
     <targetsSelectedWithDialog>
       <Target>
         <type value="QUICK_BOOT_TARGET" />
