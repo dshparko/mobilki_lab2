@@ -30,8 +30,8 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:icon="@drawable/search"
-            android:text="explore" />
+            android:icon="@drawable/likely"
+            android:text="favorites" />
 
     </com.google.android.material.tabs.TabLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
