@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class SearchActivity extends AppCompatActivity {
+public class FavoriteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +25,17 @@ public class SearchActivity extends AppCompatActivity {
                 switch (tab.getPosition()) {
                     case 0:
 
-                        Intent intent2 = new Intent(SearchActivity.this, HomeActivity.class);
+                        Intent intent2 = new Intent(FavoriteActivity.this, HomeActivity.class);
                         startActivity(intent2);
                         break;
                     case 1:
 
-                        Intent intent1 = new Intent(SearchActivity.this, UserActivity.class);
+                        Intent intent1 = new Intent(FavoriteActivity.this, UserActivity.class);
                         startActivity(intent1);
                         break;
                     case 2:
 
-                        Intent intent3 = new Intent(SearchActivity.this, SearchActivity.class);
+                        Intent intent3 = new Intent(FavoriteActivity.this, FavoriteActivity.class);
                         startActivity(intent3);
                         break;
                 }

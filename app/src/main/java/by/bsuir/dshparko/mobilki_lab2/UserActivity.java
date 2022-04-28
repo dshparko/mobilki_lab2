@@ -105,7 +105,7 @@ public class UserActivity extends AppCompatActivity  implements LocationListener
                         break;
                     case 2:
 
-                        Intent intent3 = new Intent(UserActivity.this, SearchActivity.class);
+                        Intent intent3 = new Intent(UserActivity.this, FavoriteActivity.class);
                         startActivity(intent3);
                         break;
                 }

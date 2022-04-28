@@ -48,7 +48,7 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".FavoriteActivity"
             android:exported="false" />
 
     </application>

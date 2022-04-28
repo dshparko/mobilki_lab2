@@ -3,48 +3,30 @@ package by.bsuir.dshparko.mobilki_lab2;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.tabs.TabLayout;
 
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import by.bsuir.dshparko.mobilki_lab2.Parser.ParseAdapter;
 import by.bsuir.dshparko.mobilki_lab2.Parser.ParseItem;
 import by.bsuir.dshparko.mobilki_lab2.Utilities.NetworkChangeListener;
 
-public class HomeActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
+public class HomeActivity extends AppCompatActivity{
 
     boolean searchIsOpen;
     private AppCompatButton searchButton;
@@ -72,10 +54,7 @@ public class HomeActivity extends AppCompatActivity implements CompoundButton.On
         @SuppressLint("ResourceType") TabLayout toolbar;
         toolbar = findViewById(R.id.toolbar);
         toolbar.selectTab(toolbar.getTabAt(0),true);
-        SwitchCompat switchh = findViewById(R.id.switch_button);
-        if (switchh != null) {
-            switchh.setOnCheckedChangeListener(this);
-        }
+
 
         toolbar.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -93,7 +72,7 @@ public class HomeActivity extends AppCompatActivity implements CompoundButton.On
                         break;
                     case 2:
 
-                        Intent intent3 = new Intent(HomeActivity.this, SearchActivity.class);
+                        Intent intent3 = new Intent(HomeActivity.this, FavoriteActivity.class);
                         startActivity(intent3);
                         break;
                 }
@@ -122,7 +101,9 @@ public class HomeActivity extends AppCompatActivity implements CompoundButton.On
                 ArrayList<ParseItem> newList = new ArrayList<>();
                 for (ParseItem parseItem : parseItems){
                     String name = parseItem.getName().toLowerCase();
-                    if( name.contains(newText)){
+
+                    String price = parseItem.getPrice().toLowerCase();
+                    if( name.contains(newText)||price.contains(newText)){
                         newList.add(parseItem);
                     }
                 }
@@ -130,134 +111,11 @@ public class HomeActivity extends AppCompatActivity implements CompoundButton.On
                 return true;
             }
         });
+
+
+
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        Toast.makeText(this, "Отслеживание переключения: " + (isChecked ? "on" : "off"),
-                Toast.LENGTH_SHORT).show();
-        if(isChecked==true){
-            System.out.println("DARKMODE");
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-            int theme = sp.getInt("THEME", R.style.AppTheme);
-            setTheme(theme);
-           // getApplication().setTheme(R.style.AppTheme);
-        }else{
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-            int theme = sp.getInt("THEME", R.style.Theme_Mobilki_lab2);
-            setTheme(theme);
-        }
-    }    public static boolean isNetworkAvailable() {
-        return network_available;
-    }
-
-    public static double GLOBAL_CURRENCY_COEFF = 1.0;
-
-    public static double GLOBAL_CURRENCY_BYN = 1.0;
-    public static boolean network_available = true;
-    public static double USD_IN_BYN = 0.0;
-    private static HttpURLConnection connection;
-    private static final String USD_IN_BYN_URL = "https://www.nbrb.by/api/exrates/rates/431";
-    private StringBuffer responseContent;
-    private void handleUsdInBynCurrency(){
-        network_available = true;
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> {
-            try {
-                URL url = new URL(USD_IN_BYN_URL);
-                connection = (HttpURLConnection) url.openConnection();
-
-                connection.setRequestMethod("GET");
-                connection.setConnectTimeout(5000);
-                connection.setReadTimeout(5000);
-
-                int status = connection.getResponseCode();
-                Log.e("CONNECTION STATUS", String.valueOf(status));
-
-                BufferedReader reader;
-                String line;
-                responseContent = new StringBuffer();
-
-                if (status > 299){
-                    reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-                    while ((line = reader.readLine()) != null){
-                        responseContent.append(line);
-                    }
-                    reader.close();
-                } else{
-                    reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    while ((line = reader.readLine()) != null){
-                        responseContent.append(line);
-                    }
-                    reader.close();
-                }
-                Log.e("JSON RESPONSE", responseContent.toString());
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                connection.disconnect();
-            }
-        });
-
-        try {
-            executor.shutdown();
-            executor.awaitTermination(7, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-        try {
-            JSONObject jsonObject = new JSONObject(responseContent.toString());
-            USD_IN_BYN = jsonObject.getDouble("Cur_OfficialRate");
-            GLOBAL_CURRENCY_BYN = USD_IN_BYN;
-            Log.e("USDINBYN", String.valueOf(USD_IN_BYN));
-        } catch (Exception e) {
-            network_available = false;
-        }
-    }
-
-    public void showPopupMenu(View v) {
-        PopupMenu popupMenu = new PopupMenu(this, v);
-        popupMenu.inflate(R.menu.menu_rate);
-
-        popupMenu
-                .setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.menu1:
-                                Toast.makeText(getApplicationContext(),
-                                        "Вы выбрали PopupMenu 1",
-                                        Toast.LENGTH_SHORT).show();
-                                return true;
-                            case R.id.menu2:
-                                Toast.makeText(getApplicationContext(),
-                                        "Вы выбрали PopupMenu 2",
-                                        Toast.LENGTH_SHORT).show();
-                                return true;
-                            case R.id.menu3:
-                                Toast.makeText(getApplicationContext(),
-                                        "Вы выбрали PopupMenu 3",
-                                        Toast.LENGTH_SHORT).show();
-                                return true;
-                            default:
-                                return false;
-                        }
-                    }
-                });
-
-        popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
-            @Override
-            public void onDismiss(PopupMenu menu) {
-                Toast.makeText(getApplicationContext(), "onDismiss",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-        popupMenu.show();
-    }
 
 
     @Override

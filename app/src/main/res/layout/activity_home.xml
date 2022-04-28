@@ -44,21 +44,7 @@
         <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="50dp"
-            tools:ignore="MissingConstraints">
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_button"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginStart="6dp"
-                android:layout_marginBottom="7dp"
-                android:textOff="d"
-                android:textOn="n"
-                android:theme="@style/MySwitch"
-                app:showText="true"
-                tools:ignore="MissingConstraints"></androidx.appcompat.widget.SwitchCompat>
-        </RelativeLayout>
+            tools:ignore="MissingConstraints"/>
 
         <androidx.constraintlayout.widget.Barrier
             android:layout_width="wrap_content"
@@ -66,16 +52,6 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="142dp"
             app:barrierDirection="top" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginStart="342dp"
-            android:background="@color/primary_dark"
-            android:onClick="showPopupMenu"
-            android:text="EUR"
-            android:textColor="@color/black" />
 
     </RelativeLayout>
 
@@ -141,7 +117,7 @@
         android:layout_width="478dp"
         android:layout_height="2dp"
         android:layout_marginTop="42dp"
-        android:background="#030F60"
+        android:background="@color/purple_700"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"

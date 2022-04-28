@@ -38,10 +38,10 @@
         android:id="@+id/item_price"
         android:layout_width="67dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="380dp"
-        android:layout_marginTop="708dp"
+        android:layout_marginStart="376dp"
+        android:layout_marginTop="720dp"
         android:text="price"
-        android:textSize="22sp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,4 +60,15 @@
         app:layout_constraintVertical_bias="0.169"
         tools:ignore="MissingConstraints" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="55dp"
+        android:layout_height="58dp"
+        android:layout_gravity="end"
+        android:layout_marginStart="388dp"
+        android:layout_marginTop="620dp"
+        android:background="@drawable/ic_heart_svgrepo_com"
+        android:backgroundTint="@color/accent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

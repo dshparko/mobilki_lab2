@@ -1,9 +1,11 @@
 package by.bsuir.dshparko.mobilki_lab2;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class ItemDetailActivity extends AppCompatActivity {
 
@@ -26,14 +29,17 @@ public class ItemDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         setContentView(R.layout.activity_item_detail);
+        nameText = findViewById(R.id.item_name);
 
         imageView = findViewById(R.id.item_image_view);
-        nameText = findViewById(R.id.item_name);
+
         priceText = findViewById(R.id.item_price);
         descriptionText = findViewById(R.id.item_description);
-
-        nameText.setText(getIntent().getStringExtra("name"));
+        setTitle(getIntent().getStringExtra("name"));
+      //  nameText.setText(getIntent().getStringExtra("name"));
         priceText.setText(getIntent().getStringExtra("price"));
 System.out.println(getIntent().getStringExtra("image"));
       Glide.with(getApplicationContext())
@@ -48,6 +54,18 @@ System.out.println(getIntent().getStringExtra("image"));
         content.execute();
 
 
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                Intent intent1  =new Intent(this,HomeActivity.class);
+                startActivity(intent1);
+                return true;
+            default:return super.onOptionsItemSelected(item);
+        }
     }
 
     private class Content extends AsyncTask<Void, Void, Void> {
